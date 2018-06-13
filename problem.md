@@ -2,7 +2,7 @@
 
 Customer support cases are escalated from our support team to a member of the Runtime Team when the case requires deeper technical investigation. The goal of this project is to calculate the hours we spend actively working on support cases. This will help us track our team's support burden over time.
 
-Support cases are represented as a series of events. There are two types of events: either the assignee changed or the state changed. Support cases can be in four states: “null”, open, pending, or closed. All timestamps are UTC.
+Support cases are represented as a series of events. There are two types of events: either the assignee changed or the state changed. Support cases can be in four states: “null”, open, pending, or closed. All timestamps are UTC. 
 
 **Feature Request**
 
@@ -21,7 +21,7 @@ For example, given the following events for support case 100, the correct output
 
 **Acceptance Criteria**
 
-Accept POST input of JSON support case events. Return JSON output with the total number of hours each case was open and assigned to the Runtime Team.
+Accept POST input of JSON support case events.  Return JSON output with the total number of hours each case was open and assigned to the Runtime Team.
 
 Your web service should yield the following output when provided with the input.json file below.
 

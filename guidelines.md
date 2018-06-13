@@ -12,7 +12,7 @@ with you. More on the pairing sessions below.
 
 The emphasis of the homework assignment is seeing how you would approach
 solving [a problem](problem.md). We tried to come up with a problem that you can
-do in a couple hours and we don't expect you to spend too much time on this.
+do in a couple hours, and we don't expect you to spend too much time on this.
 
 Please write the solution in the language of your choice. Yes, any. Now the
 [problem](problem.md) itself requires setting up the ability to take a web
