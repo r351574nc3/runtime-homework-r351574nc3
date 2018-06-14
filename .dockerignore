@@ -1,0 +1,6 @@
+bazel-bin
+bazel-genfiles
+bazel-out
+bazel-runtime-homework-r351574nc3
+bazel-testlogs
+gazelle_build*
