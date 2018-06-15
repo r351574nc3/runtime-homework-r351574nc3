@@ -18,5 +18,8 @@ go_test(
         "model_test.go",
         "state_test.go",
     ],
+    data = [
+        "test_data/events.json"
+    ],
     embed = [":go_default_library"],
 )
