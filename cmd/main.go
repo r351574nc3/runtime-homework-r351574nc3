@@ -2,9 +2,10 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/heroku/runtime-homework-r351574nc3/events"
 )
 
-var CASE_EVENT_STORE = make(map[string]string)
+const CASE_EVENT_STORE = events.LoadEvents()
 
 func createRouter() *gin.Engine {
 	r := gin.Default()
@@ -23,6 +24,7 @@ func createRouter() *gin.Engine {
 }
 
 func main() {
+	events.Replay(CASE_EVENT_STORE)
 	r := createRouter()
 
 	r.Run(":3000")

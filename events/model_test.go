@@ -14,3 +14,9 @@ func TestLoadEvents(t *testing.T) {
 		t.Errorf("Expected %d events but got %d", expected, len(events))
 	}
 }
+
+func TestReplay(t *testing.T) {
+	events := LoadEvents()
+
+	Replay(events)
+}

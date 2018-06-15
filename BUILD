@@ -15,5 +15,5 @@ genrule(
 
 gazelle(
     name = "gazelle",
-    prefix = "github.com/r351574nc3/runtime-homework-r351574nc3",
+    prefix = "github.com/heroku/runtime-homework-r351574nc3",
 )

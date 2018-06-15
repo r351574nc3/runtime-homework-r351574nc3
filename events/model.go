@@ -36,3 +36,9 @@ func LoadEvents() []Event {
 	json.Unmarshal(raw, &c)
 	return c
 }
+
+func Replay(store []Event) {
+	for _, event := range store {
+		fmt.Printf("Processing case_id %d", event.Id)
+	}
+}
