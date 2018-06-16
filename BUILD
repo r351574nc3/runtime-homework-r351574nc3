@@ -6,7 +6,7 @@ genrule(
         "//cmd:support-cases",
     ],
     outs = [
-        "support-cases",
+        "app",
     ],
     cmd = "cp ./bazel-out/*/bin/cmd/*/support-cases \"$@\"",
     executable = 1,
