@@ -23,7 +23,7 @@ func createRouter() *gin.Engine {
 		if ok {
 			response HoursResponse = make(HoursResponse)
 			for summary := range summaries {
-				response = append(response, DurationSummary{ CaseId: summary.Id, Duration: summary.Duration })
+				response = response.Increment(DurationSummary{ CaseId: summary.Id, Duration: summary.Duration })
 			}
 
 			c.JSON(200, gin.H{ response })

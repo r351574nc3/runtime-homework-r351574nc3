@@ -4,6 +4,7 @@ go_library(
     name = "go_default_library",
     srcs = [
         "types.go",
+        "methods.go"
     ],
     importpath = "github.com/heroku/runtime-homework-r351574nc3/common",
     visibility = ["//visibility:public"],
