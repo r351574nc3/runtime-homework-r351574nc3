@@ -1,20 +1,21 @@
 package types
 
 import (
+	"container/list"
 	"time"
 )
 
-type SubscriptionFilter func(e *Event) bool
+type SubscriptionFilter func(e Event) bool
 
 type Subscriber interface {
 	Subscribe(SubscriptionFilter)
-	Notify(*Event)
-	Match(*Event) bool
+	Notify(*list.Element)
+	Match(Event) bool
 }
 
 type SubscriptionRegistry interface {
 	RegisterSubscriber(Subscriber)
-	Publish(*Event)
+	Publish(Event)
 }
 
 type Transition struct {

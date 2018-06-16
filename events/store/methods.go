@@ -24,8 +24,7 @@ func (s *EventStore) Init() *EventStore {
 }
 
 func (s *EventStore) Publish(event types.Event) {
-	s.Events.PushBack(event)
-	s.subscriptions.Publish(event)
+	s.subscriptions.Publish(s.Events.PushBack(event))
 }
 
 func (s *EventSubscriptions) RegisterSubscriber(subscriber types.Subscriber) error {
@@ -33,12 +32,12 @@ func (s *EventSubscriptions) RegisterSubscriber(subscriber types.Subscriber) err
 	return nil
 }
 
-func (s *EventSubscriptions) Publish(event types.Event) {
+func (s *EventSubscriptions) Publish(el *list.Element) {
 	for e := s.subscribers.Front(); e != nil; e = e.Next() {
 		subscriber := e.Value.(types.Subscriber)
 
-		if subscriber.Match(&event) {
-			subscriber.Notify(&event)
+		if subscriber.Match(el.Value.(types.Event)) {
+			subscriber.Notify(el)
 		}
 	}
 }
