@@ -5,7 +5,11 @@ go_library(
     srcs = [
         "assign/assign.go",
         "model.go",
+        "types.go",
         "state/state.go",
+    ],
+    deps = [
+        "//events/store:go_default_library"
     ],
     importpath = "github.com/heroku/runtime-homework-r351574nc3/events",
     visibility = ["//visibility:public"],

@@ -5,24 +5,17 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/heroku/runtime-homework-r351574nc3/events/store"
 )
 
 const (
 	EVENT_FILE_KEY = "EVENT_FILE"
 )
 
-type Transition struct {
-	From string `json:"from"`
-	To   string `json:"to"`
-}
-
-type Event struct {
-	Id        int        `json:"case_id"`
-	Timestamp string     `json:"timestamp"`
-	Assignee  string     `json:"assignee"`
-	Team      string     `json:"team"`
-	State     Transition `json:"state"`
-}
+var (
+	Store = store.New()
+)
 
 // Read events as JSON from a file. This usually happens at startup.
 func LoadEvents() []Event {
@@ -37,8 +30,8 @@ func LoadEvents() []Event {
 	return c
 }
 
-func Replay(store []Event) {
-	for _, event := range store {
-		fmt.Printf("Processing case_id %d", event.Id)
+func Replay(event_set []Event) {
+	for _, event := range event_set {
+		Store.Events.PushBack(event)
 	}
 }
