@@ -4,6 +4,8 @@ go_library(
     name = "go_default_library",
     srcs = [
         "store.go",
+        "methods.go",
+        "types.go"
     ],
     deps = [
         "//events/types:go_default_library"
