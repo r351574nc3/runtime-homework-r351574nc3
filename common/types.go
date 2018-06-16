@@ -3,8 +3,8 @@ package common
 type HoursResponse []DurationSummary
 
 type DurationSummary struct {
-	CaseId   int
-	Duration int
+	CaseId   int     `json:"case_id"`
+	Duration float64 `json:"duration"`
 }
 
 type Assignment struct {

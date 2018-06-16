@@ -5,8 +5,10 @@ go_library(
     srcs = ["main.go"],
     deps = [
         "//common:go_default_library",
-        "//events:go_default_library"
-    ]
+        "//events:go_default_library",
+        "//events/store:go_default_library",
+        "//events/types:go_default_library"
+    ],
     importpath = "github.com/heroku/runtime-homework-r351574nc3/cmd",
     visibility = ["//visibility:private"],
 )

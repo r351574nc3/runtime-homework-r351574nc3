@@ -3,20 +3,20 @@ package types
 func (i *SearchableDurationIndex) New() *SearchableDurationIndex {
 	if i == nil {
 		retval := new(SearchableDurationIndex)
-		retval.Items = make([]StateEventSummary, 10)
+		retval.Items = make([]StateEventSummary, 0)
 		return retval
 	}
 	return i
 }
 
-func (i *SearchableDurationIndex) Filter(f DurationIndexSearchFilter) []StateEventSummary {
-	var retval []StateEventSummary = make([]StateEventSummary, 10)
+func (i *SearchableDurationIndex) Filter(f DurationIndexSearchFilter) ([]StateEventSummary, bool) {
+	var retval []StateEventSummary = make([]StateEventSummary, 0)
 	for _, summary := range i.Items {
 		if f(summary) {
 			retval = append(retval, summary)
 		}
 	}
-	return retval
+	return retval, true
 }
 
 // AssignTo copies values from the source Event to the Target event as long as the fields are not
@@ -34,16 +34,12 @@ func (source *Event) AssignTo(target *Event) bool {
 		target.Team = source.Team
 	}
 
-	if source.State != nil && source.State.From != "" && target.State.From == "" {
-		target.State.From = source.State.From
-	}
-
 	if source.State != nil && source.State.To != "" && target.State.To == "" {
 		target.State.To = source.State.To
 	}
 
-	if target.Assignee != "" && target.Team != "" && target.State.From != "" && target.State.To != "" {
+	if target.Assignee != "" && target.Team != "" && target.State.To != "" {
 		return true
 	}
-	return true
+	return false
 }

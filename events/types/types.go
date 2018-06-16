@@ -33,7 +33,7 @@ type SearchableDurationIndex struct {
 }
 
 type Searchable interface {
-	Filter(f DurationIndexSearchFilter) []StateEventSummary
+	Filter(f DurationIndexSearchFilter) ([]StateEventSummary, bool)
 }
 
 type Transition struct {
@@ -42,9 +42,9 @@ type Transition struct {
 }
 
 type Event struct {
-	Id        int         `json:"case_id"`
-	Timestamp time.Time   `json:"timestamp"`
-	Assignee  string      `json:"assignee"`
-	Team      string      `json:"team"`
-	State     *Transition `json:"state"`
+	Id        int         `form:"case_id" json:"case_id" binding:"required"`
+	Timestamp time.Time   `form:"timestamp" json:"timestamp" binding:"required"`
+	Assignee  string      `form:"assignee" json:"assignee" binding:"required"`
+	Team      string      `form:"team" json:"team" binding:"required"`
+	State     *Transition `form:"state" json:"state" binding:"required"`
 }

@@ -8,7 +8,7 @@ genrule(
     outs = [
         "support-cases",
     ],
-    cmd = "cp ./bazel-out/*/bin/cmd/*/support-cases \"$@\" && ls -l",
+    cmd = "cp ./bazel-out/*/bin/cmd/*/support-cases \"$@\"",
     executable = 1,
     local = 1,
 )
