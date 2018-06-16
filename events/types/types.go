@@ -1,5 +1,9 @@
 package types
 
+import (
+	"time"
+)
+
 type SubscriptionFilter func(e *Event) bool
 
 type Subscriber interface {
@@ -20,7 +24,7 @@ type Transition struct {
 
 type Event struct {
 	Id        int         `json:"case_id"`
-	Timestamp string      `json:"timestamp"`
+	Timestamp time.Time   `json:"timestamp"`
 	Assignee  string      `json:"assignee"`
 	Team      string      `json:"team"`
 	State     *Transition `json:"state"`

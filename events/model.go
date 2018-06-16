@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"sort"
 
 	"github.com/heroku/runtime-homework-r351574nc3/events/assign"
 	"github.com/heroku/runtime-homework-r351574nc3/events/state"
@@ -26,11 +27,12 @@ func LoadEvents() []types.Event {
 	raw, err := ioutil.ReadFile(os.Getenv(EVENT_FILE_KEY))
 	if err != nil {
 		fmt.Println(err.Error())
-		os.Exit(1)
 	}
 
 	var c []types.Event
 	json.Unmarshal(raw, &c)
+
+	sort.Sort(ByTimestamp(c)) // sort everything by timestamp
 	return c
 }
 
