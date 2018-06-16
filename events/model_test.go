@@ -3,6 +3,8 @@ package events
 import (
 	"os"
 	"testing"
+
+	"github.com/heroku/runtime-homework-r351574nc3/events/store"
 )
 
 func TestLoadEvents(t *testing.T) {
@@ -19,4 +21,8 @@ func TestReplay(t *testing.T) {
 	events := LoadEvents()
 
 	Replay(events)
+
+	if len(store.DurationIndex.Items) != 21 {
+		t.Errorf("Expected %d durations, but got %d", 34, len(store.DurationIndex.Items))
+	}
 }

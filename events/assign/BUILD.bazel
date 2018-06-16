@@ -8,6 +8,7 @@ go_library(
         "types.go"
     ],
     deps = [
+        "//common:go_default_library",
         "//events/store:go_default_library",
         "//events/types:go_default_library"
     ],

@@ -7,6 +7,8 @@ import (
 
 type SubscriptionFilter func(e Event) bool
 
+type DurationIndexSearchFilter func(e StateEventSummary) bool
+
 type Subscriber interface {
 	Subscribe(SubscriptionFilter)
 	Notify(*list.Element)
@@ -16,6 +18,22 @@ type Subscriber interface {
 type SubscriptionRegistry interface {
 	RegisterSubscriber(Subscriber)
 	Publish(Event)
+}
+
+type StateEventSummary struct {
+	Id       int
+	Assignee string
+	Team     string
+	Status   string
+	Duration time.Duration
+}
+
+type SearchableDurationIndex struct {
+	Items []StateEventSummary
+}
+
+type Searchable interface {
+	Filter(f DurationIndexSearchFilter) []StateEventSummary
 }
 
 type Transition struct {
