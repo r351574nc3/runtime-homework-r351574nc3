@@ -22,7 +22,7 @@ func TestReplay(t *testing.T) {
 
 	Replay(events)
 
-	if len(store.DurationIndex.Items) != 34 {
+	if len(store.DurationIndex.Items) != 34	 {
 		t.Errorf("Expected %d durations, but got %d", 34, len(store.DurationIndex.Items))
 	}
 }
